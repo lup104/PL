@@ -1,0 +1,21 @@
+---
+title: "Using Plotly to Explore the state Dataset"
+output:
+  html_document: default
+
+---
+###Peggy Lu  
+###January 12, 2017  
+
+###Summary:  The intend of this assignment is to explore the dataset "state" with Plotly.   Three dimensions are represented in this interactive plot including income (x-axis), population (y-axis), region (color). 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+data(state)
+state_pop <- data.frame(State = as.vector(state.abb), Pop = as.vector(state.x77[,1]), Region=state.region, Income=as.vector(state.x77[,2]))
+
+plot_ly(state_pop, x=state_pop$Income, y=state_pop$Pop, mode="text", text = ~State, type="scatter",  color=as.factor(state_pop$Region))  %>%
+   layout( xaxis = list(title = 'Income'), yaxis = list(title = 'Population Estimate as of July  1975'))
+
+```
+
