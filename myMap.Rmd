@@ -1,0 +1,21 @@
+---
+title: "Developing Data Product:  R Markdown and Leaflet"
+output: html_document
+---
+###Peggy Lu
+###January 7, 2017
+
+
+##Top New York Attractions
+```{r, echo=FALSE }
+library(leaflet)
+myLatLong <- data.frame(
+     lat = c(40.748817, 40.689247, 40.785091),
+     lng = c(-73.985428,-74.044502, -73.968285))
+myPopup=c("Empire State Building, New York, NY, USA", 
+          "Statue of Liberty National Monument, New York, USA",
+          "Central Park, New York, NY, USA")
+my_map <- myLatLong %>% leaflet() %>% addTiles() %>% addMarkers(popup=myPopup)
+my_map
+```
+
